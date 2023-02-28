@@ -1,8 +1,6 @@
 package cz.upce.nnpia.cv01;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 /*
@@ -13,8 +11,23 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping("/api/v1")
 public class HelloController {
-    @GetMapping
+    @GetMapping("")
     public String helloWorld() {
         return "Hello world from Spring Boot application.";
+    }
+
+    @GetMapping("/{name}")
+    public String helloName(@PathVariable String name){
+        return String.format("Hello %s from Spring Boot application.",name);
+    }
+
+    @GetMapping("/param")
+    public String helloParam(@RequestParam("param") String param){
+        return String.format("Hello from Spring Boot application, you type this param: %s",param);
+    }
+
+    @PostMapping("")
+    public String helloPost(@RequestBody HelloDto helloDto){
+        return String.format("Hello %s %s from Spring Boot application, you are %d y.o.",helloDto.getFirstName(), helloDto.getLastName(),helloDto.getAge());
     }
 }
