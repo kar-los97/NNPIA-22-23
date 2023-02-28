@@ -9,7 +9,13 @@ import org.springframework.web.bind.annotation.*;
     @RestController - novější verze anotace, přidává automaticky anotaci @ResponseBody ke všem metodám,
     anotace @ResponseBody, @RestController je tedy kombinací anotací @Controller a @ResponseBody
  */
-@RequestMapping("/api/v1")
+//@RequestMapping("/api/v1")
+/*
+    XML - objekty a parametry jsou zadávány pomocí tagů, obdobně jako v HTML
+    YAML - objekty a jejich parametry jsou rozlišovýny pomocí tabulátorů
+    JSON - objekty jsou uvozeny složenými závorkami, názvy parametrů pak jsou v uvozovkách následovanými dvojtečkou,
+    za kterou je hodnota parametru, pole jsou zde reprezentovány hranatými závorami
+ */
 public class HelloController {
     @GetMapping("")
     public String helloWorld() {
