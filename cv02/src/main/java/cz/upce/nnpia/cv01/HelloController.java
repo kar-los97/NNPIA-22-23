@@ -1,5 +1,8 @@
 package cz.upce.nnpia.cv01;
 
+import cz.upce.nnpia.cv01.repository.AppUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,9 +20,15 @@ import org.springframework.web.bind.annotation.*;
     za kterou je hodnota parametru, pole jsou zde reprezentovány hranatými závorami
  */
 public class HelloController {
+    private final AppUserRepository appUserRepository;
+
+    public HelloController(AppUserRepository appUserRepository) {
+        this.appUserRepository = appUserRepository;
+    }
+
     @GetMapping("")
-    public String helloWorld() {
-        return "Hello world from Spring Boot application.";
+    public ResponseEntity<?> helloWorld() {
+        return ResponseEntity.ok(appUserRepository.findByActive(true));
     }
 
     @GetMapping("/{name}")
