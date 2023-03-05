@@ -9,8 +9,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @ManyToMany
-    private Set<AppUser> appUsers;
 
     public Integer getId() {
         return id;
@@ -26,13 +24,5 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<AppUser> getAppUsers() {
-        return appUsers;
-    }
-
-    public void setAppUsers(Set<AppUser> appUsers) {
-        this.appUsers = appUsers;
     }
 }

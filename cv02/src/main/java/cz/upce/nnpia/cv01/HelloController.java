@@ -1,9 +1,13 @@
 package cz.upce.nnpia.cv01;
 
+import cz.upce.nnpia.cv01.entity.Role;
 import cz.upce.nnpia.cv01.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @RestController
 /*
@@ -32,8 +36,8 @@ public class HelloController {
     }
 
     @GetMapping("/{name}")
-    public String helloName(@PathVariable String name){
-        return String.format("Hello %s from Spring Boot application.",name);
+    public ResponseEntity<?> helloName(@PathVariable String name){
+        return ResponseEntity.ok(appUserRepository.findAppUsersByRole(1));
     }
 
     @GetMapping("/param")

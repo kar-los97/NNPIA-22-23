@@ -17,14 +17,15 @@ public class AppUser {
     private Date updateDate;
 
     @ManyToMany
-    private Set<Role> roles;
+    @JoinTable(name = "app_user_role",joinColumns = {@JoinColumn(name="app_user_id")},inverseJoinColumns = {@JoinColumn(name="role_id")})
+    private Set<Role> role;
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<Role> getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Set<Role> role) {
+        this.role = role;
     }
 
     public Integer getId() {
