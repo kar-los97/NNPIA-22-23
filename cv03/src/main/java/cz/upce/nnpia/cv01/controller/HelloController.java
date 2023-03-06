@@ -1,5 +1,6 @@
-package cz.upce.nnpia.cv01;
+package cz.upce.nnpia.cv01.controller;
 
+import cz.upce.nnpia.cv01.HelloDto;
 import cz.upce.nnpia.cv01.entity.Role;
 import cz.upce.nnpia.cv01.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

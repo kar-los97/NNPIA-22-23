@@ -1,7 +1,10 @@
 package cz.upce.nnpia.cv01.entity;
 
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
@@ -10,6 +13,8 @@ public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotNull
+    @Size(min = 1,max = 250)
     private String username;
     private String password;
     private boolean active;
