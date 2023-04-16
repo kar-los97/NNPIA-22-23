@@ -1,0 +1,101 @@
+databaseChangeLog:
+    - changeSet:
+          id: create
+          author: liquibase-docs
+          changes:
+            - createTable:
+                catalogName: nnpia
+                columns:
+                - column:
+                    name: id
+                    type: int4
+                    autoIncrement: true
+                    constraints:
+                        primaryKey: true
+                        primaryKeyName: pk_app_user
+                - column:
+                    name: username
+                    type: varchar(255)
+                - column:
+                    name: password
+                    type: varchar(255)
+                - column:
+                    name: active
+                    type: bool
+                - column:
+                    name: creation_date
+                    type: timestamp
+                - column:
+                    name: update_date
+                    type: timestamp
+                remarks: A String
+                schemaName: public
+                tableName: app_user
+
+            - createTable:
+                  catalogName: nnpia
+                  columns:
+                      - column:
+                            name: id
+                            type: int4
+                            autoIncrement: true
+                            constraints:
+                                primaryKey: true
+                                primaryKeyName: pk_task
+                      - column:
+                            name: title
+                            type: varchar(255)
+                      - column:
+                            name: description
+                            type: varchar(255)
+                      - column:
+                            name: creation_date
+                            type: timestamp
+                      - column:
+                            name: update_date
+                            type: timestamp
+                      - column:
+                            name: author_id
+                            type: int4
+                            constraints:
+                                foreignKeyName: fk_task_user
+                                references: app_user(id)
+                  remarks: A String
+                  schemaName: public
+                  tableName: task
+
+            - createTable:
+                  catalogName: nnpia
+                  columns:
+                      - column:
+                            name: id
+                            type: int4
+                            autoIncrement: true
+                            constraints:
+                                primaryKey: true
+                                primaryKeyName: pk_role
+                      - column:
+                            name: name
+                            type: varchar(255)
+                  remarks: A String
+                  schemaName: public
+                  tableName: role
+
+            - createTable:
+                  catalogName: nnpia
+                  columns:
+                      - column:
+                            name: app_user_id
+                            type: int4
+                            constraints:
+                                foreignKeyName: fk_app_user_role_user
+                                references: app_user(id)
+                      - column:
+                            name: role_id
+                            type: int4
+                            constraints:
+                                foreignKeyName: fk_app_user_role_role
+                                references: role(id)
+                  remarks: A String
+                  schemaName: public
+                  tableName: app_user_role
